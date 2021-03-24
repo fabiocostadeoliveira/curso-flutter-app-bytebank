@@ -1,16 +1,28 @@
+import 'package:bytebank/models/saldo.dart';
 import 'package:bytebank/screens/dashboards/saldoCard.dart';
+import 'package:bytebank/screens/deposito/formulario.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("bytebank"),
-      ),
-      body: Align(
-        alignment: Alignment.topCenter,
-        child: SaldoCard(),
-      ),
-    );
+        appBar: AppBar(
+          title: const Text("bytebank"),
+        ),
+        body: ListView(children: <Widget>[
+          Align(
+            alignment: Alignment.topCenter,
+            child: SaldoCard(),
+          ),
+          RaisedButton(
+            child: Text('Receber depósito'),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return FormularioDeposito();
+              }));
+            },
+          )
+        ]));
   }
 }
