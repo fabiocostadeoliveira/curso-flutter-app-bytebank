@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 class Transferencias extends ChangeNotifier {
   final List<Transferencia> _transferencia = [];
 
-  List<Transferencia> get transferencia => this._transferencia;
+  List<Transferencia> get transferencias => this._transferencia;
 
   adicionar(Transferencia novaTransferencia) {
-    transferencia.add(novaTransferencia);
+    transferencias.add(novaTransferencia);
     notifyListeners();
   }
 }

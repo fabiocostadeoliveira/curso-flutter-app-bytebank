@@ -54,14 +54,28 @@ class FormularioTransferencia extends StatelessWidget {
     final int numeroConta = int.tryParse(_controladorCampoNumeroConta.text);
     final double valor = double.tryParse(_controladorCampoValor.text);
 
-    if (_isTranferenciaValida(numeroConta, valor)) {
+    if (_isTranferenciaValida(context, numeroConta, valor)) {
       final novaTransferencia = Transferencia(numeroConta, valor);
       _atualizarListaTransferenciaState(context, novaTransferencia);
       Navigator.pop(context);
     }
   }
 
-  bool _isTranferenciaValida(numeroConta, valor) {
+  bool _isTranferenciaValida(context, numeroConta, valor) {
+    return _isFormularioPreenchido(numeroConta, valor) &&
+        _isSaldoSuficiente(context, valor);
+  }
+
+  bool _isSaldoSuficiente(context, valor) {
+    final _saldoSuficiente = valor <=
+        Provider.of<Saldo>(
+          context,
+          listen: false,
+        ).valor;
+    return _saldoSuficiente;
+  }
+
+  bool _isFormularioPreenchido(numeroConta, valor) {
     return numeroConta != null && valor != null;
   }
 
