@@ -1,14 +1,14 @@
 import 'package:bytebank/screens/dashboards/saldoCard.dart';
 import 'package:bytebank/screens/deposito/formulario.dart';
 import 'package:bytebank/screens/transferencias/formulario.dart';
-import 'package:bytebank/screens/transferencias/lista.dart';
+import 'package:bytebank/screens/transferencias/ultimas.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("bytebank"),
+          title: const Text("Bytebank"),
         ),
         body: ListView(children: <Widget>[
           Align(
@@ -41,18 +41,7 @@ class Dashboard extends StatelessWidget {
               ),
             ],
           ),
-          RaisedButton(
-            color: Colors.green,
-            child: Text('Transferencias'),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) {
-                  return ListaTransferencias();
-                }),
-              );
-            },
-          ),
+          UltimasTransferencias(),
         ]));
   }
 }
